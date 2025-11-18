@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-humble-rtabmap-ros \
     ros-humble-robot-localization \
     ros-humble-pcl-ros \
-    ros-humble-rosbridge-server \
+    ros-humble-ros-tcp-endpoint \
     python3-colcon-common-extensions \
     # Cleanup to reduce image size
     && rm -rf /var/lib/apt/lists/* /tmp/*
