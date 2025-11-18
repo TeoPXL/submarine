@@ -1,12 +1,17 @@
-version: "3.9"
 services:
   ros2:
-    build: ros2/.
-    container_name: ros2_submarine
+    build:
+      context: .
+      dockerfile: ros2/Dockerfile
+    container_name: ros2_submarine_dev
     network_mode: bridge
     ports:
-      - "10000:10000"   # Unity ROS TCP Connector
+      - "10000:10000"
     volumes:
-      - ./ros2_ws:/ros2_ws
-    tty: true
-
+      # Mount ONLY source for hot-reloading
+      - ./ros2_ws/src:/ros2_ws/src:rw
+    # DO NOT mount the entire ./ros2_ws
+    environment:
+      - COLCON_BUILD_ON_START=1  # Add logic to entrypoint.sh to rebuild on start
+    tty: true  # Useful for interactive debugging in dev
+    stdin_open: true

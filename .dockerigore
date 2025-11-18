@@ -1,0 +1,7 @@
+# Ignore everything first
+**
+
+# Then allow only what's needed
+!ros2_ws/src/
+!ros2/
+!ros2/entrypoint.sh
